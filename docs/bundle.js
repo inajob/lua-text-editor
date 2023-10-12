@@ -1656,11 +1656,12 @@ var luaEditor = (function () {
 	});
 
 	let input;
+	let log;
 	let keydownHandler;
 	let charHandler;
 
 	function setupCanvas(){
-	  input = document.createElement("input");
+	 input = document.createElement("input");
 	  input.className = "hidden-input";
 	  document.body.appendChild(input);
 	  input.addEventListener("keypress", (e) => {
@@ -1678,6 +1679,7 @@ var luaEditor = (function () {
 	    if(e.key.length == 1){
 	      return
 	    }
+	    log.appendChild(document.createTextNode("keydown: " + e.keyCode + "," + e.code));
 	    if(e.keyCode != 13 && e.code == "Enter"){ // ime enter
 	      console.log(e, input.value);
 	      const text = input.value;
@@ -1707,6 +1709,10 @@ var luaEditor = (function () {
 	    //focus(e.clientX, e.clientY);
 	    e.preventDefault();
 	  });
+
+	  log = document.createElement("div");
+	  document.body.appendChild(log);
+	 
 	  return canvas;
 	}
 
