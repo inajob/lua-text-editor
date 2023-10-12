@@ -9,6 +9,7 @@ function setupCanvas(){
   document.body.appendChild(input)
   input.addEventListener("keypress", (e) => {
     console.log("keypress", e.key)
+    log.appendChild(document.createTextNode("keypress: " + e.keyCode + "," + e.code))
     if(e.key.length == 1){
       console.log("charHandler", e.key)
       charHandler(e.key)
@@ -19,10 +20,10 @@ function setupCanvas(){
   });
   input.addEventListener("keydown", (e) => {
     console.log("keydown", e, e.key)
+    log.appendChild(document.createTextNode("keydown: " + e.keyCode + "," + e.code))
     if(e.key.length == 1){
       return
     }
-    log.appendChild(document.createTextNode("keydown: " + e.keyCode + "," + e.code))
     if(e.keyCode != 13 && e.code == "Enter"){ // ime enter
       console.log(e, input.value)
       const text = input.value
