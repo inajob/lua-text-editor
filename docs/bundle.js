@@ -1664,9 +1664,9 @@ var luaEditor = (function () {
 	 input = document.createElement("input");
 	  input.className = "hidden-input";
 	  document.body.appendChild(input);
-	  input.addEventListener("input", (e) => {
+	  input.addEventListener("compositionend", (e) => {
 	    console.log(e);
-	    log.appendChild(document.createTextNode("input: " + e.data));
+	    log.appendChild(document.createTextNode("compositionend: " + e.data));
 	  });
 	  input.addEventListener("keypress", (e) => {
 	    console.log("keypress", e.key);
